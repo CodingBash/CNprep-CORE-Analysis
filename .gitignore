@@ -1,3 +1,4 @@
 **/cnprep_data/**
 **/*.o*
 **/*.e*
+**/prev_run*/**
