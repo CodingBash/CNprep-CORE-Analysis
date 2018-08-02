@@ -33,16 +33,15 @@ sample_dir <- "./resources/cnprep_data/prev_run_7_27_2018_8"
 # Get CORE input
 #
 samples <- load_samples(classes = c("T", "F", "M"), sampleList = "./resources/sampleList.csv")
-chromosomeSizes <- readRDS("./resources/chromosomeSizes.rds")
 
-inputCORESegments <- selectCnprepSegmentsWithEvent(events, samples, sample_dir, 0.001, probes = FALSE, silent = FALSE)
-inputCOREBoundaries <- generateInputCOREBoundaries(chromosomeSizes)
+inputCORESegments <- selectCnprepSegmentsWithEvent(events, samples, sample_dir, 0.001, probes = TRUE, silent = FALSE)
+
 print("Prepared all inputs - now running CORE")
 
 #
 # Run CORE
 #
-outputCOREobj <- runCORE(inputCORESegments, inputCOREBoundaries, distrib="Grid", maxmark=150, nshuffle=500, seedme=123, njobs=8)
+outputCOREobj <- runCORE(inputCORESegments, distrib="Grid", maxmark=150, nshuffle=500, seedme=123, njobs=8)
 print("CORE run complete")
 
 #

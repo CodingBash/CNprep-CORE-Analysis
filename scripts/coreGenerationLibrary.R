@@ -107,6 +107,8 @@ selectCnprepSegmentsWithEvent <- function(events, samples, dir, mprob_thresh, be
       selectedSegments <- selectedSegments[,c("chrom", "start", "end", "mediandev", "maxzmean", "marginalprob")]
     } else {
       selectedSegments <- selectedSegments[,c("chrom", "abs.pos.start", "abs.pos.end", "mediandev", "maxzmean", "marginalprob")]
+      colnames(selectedSegments)[2] <- "start"
+      colnames(selectedSegments)[3] <- "end"
     }      
   }
   return(selectedSegments)
